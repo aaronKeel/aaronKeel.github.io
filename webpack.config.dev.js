@@ -11,7 +11,7 @@ module.exports = {
     './public/src/index.ts',
   ],
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].[chunkhash].bundle.js',
     path: path.resolve(__dirname),
   },
   module: {
@@ -66,7 +66,11 @@ module.exports = {
       }
     }),
     new WebpackNotifierPlugin({ alwaysNotify: true }),
-    new CleanWebpackPlugin(['*.html', '*.js']),
+    new CleanWebpackPlugin(['*.html', '*.bundle.js'], {
+      root: __dirname,
+      verbose: true,
+      dry: false
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks(module) {
