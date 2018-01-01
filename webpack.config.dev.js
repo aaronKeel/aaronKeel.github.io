@@ -69,7 +69,8 @@ module.exports = {
     new CleanWebpackPlugin(['*.html', '*.bundle.js'], {
       root: __dirname,
       verbose: true,
-      dry: false
+      dry: false,
+      watch: false
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
