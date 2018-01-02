@@ -8,12 +8,15 @@ const lineChart = new LineChart();
 
 const target = '#page';
 
-d3.select(target).html('<p>Krampus</p>');
+d3.select(target).html('<p class="sub-head">Website.</p>');
+d3.select(target).append('h1').classed('my-name', true).text('Aaron C Keel');
+d3.select(target).append('p').classed('my-title', true).text('JavaScript Developer - Data Visualization');
+d3.select(target).append('p').classed('my-title', true).text('Seattle, Washington');
 
-const controlsContainer = d3.select(target).append('div');
+const controlsContainer = d3.select(target).append('div').classed('controls-container', true);
 
 let prob = 0.5;
-let n = 100;
+let n = 500;
 let strategy = 'default';
 
 controlsContainer.append('button')

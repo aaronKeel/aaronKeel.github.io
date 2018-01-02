@@ -2,7 +2,33 @@ body {
 	font-family: helvetica, sans-serif;
 }
 
+button {
+	font-size: 2em;
+	border-radius: 12px;
+}
+
 input, select {
 	font-size: 2em;
 	border: none;
+}
+
+.sub-head {
+	font-size: 0.5em;
+}
+
+.my-name {
+	text-align: center;
+	font-family: times, serif;
+	font-weight: 100;
+}
+
+.my-title {
+	text-align: center;
+	font-family: times, serif;
+	font-weight: 100;
+	font-size: 1em;
+}
+
+.controls-container {
+	text-align: center;
 }

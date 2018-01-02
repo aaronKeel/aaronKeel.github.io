@@ -153,13 +153,13 @@ export default class LineChart {
 
     this.posAreaPath = this.g.append('path')
     		.datum(data)
-    		.attr('fill', 'rgba(0, 255, 0, 0.5)')
+    		.attr('fill', 'rgba(0, 0, 255, 0.3)')
     		.attr('stroke', 'none')
     		.attr('d', this.posArea);
 
     this.negAreaPath = this.g.append('path')
     		.datum(data)
-    		.attr('fill', 'rgba(255, 0, 0, 0.5)')
+    		.attr('fill', 'rgba(0, 0, 255, 0.5)')
     		.attr('stroke', 'none')
     		.attr('d', this.negArea);
 
