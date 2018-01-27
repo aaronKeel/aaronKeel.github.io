@@ -4,7 +4,7 @@ export default function getExtent<T>(data: T[], accessorFn: (datum: T) => number
 	const [min, max] = d3.extent(data, accessorFn);
 
 	return [
-		min === undefined ? 0 : Number(min), 
+		min === undefined ? 0 : Number(min),
 		max === undefined ? 1 : Number(max),
 	];
 }

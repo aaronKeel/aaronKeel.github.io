@@ -13,7 +13,9 @@ export default function appendElement(targetElement: string, elementType: string
 		.append(elementType);
 
 	for (const attr in attrs) {
-		sel.attr(attr, attrs[attr]);
+		if (attrs.hasOwnProperty(attr)) {
+			sel.attr(attr, attrs[attr]);
+		}
 	}
 
 	return sel;

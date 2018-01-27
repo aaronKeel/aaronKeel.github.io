@@ -36,7 +36,7 @@ controlsContainer.append('label')
 		.attr('min', 0)
 		.attr('max', 1)
 		.attr('step', 0.005)
-		.on('change', function() { 
+		.on('change', function() {
 			prob = d3.select(this).property('value');
 		});
 
@@ -51,7 +51,7 @@ controlsContainer.append('label')
 		.attr('min', 2)
 		.attr('max', 5000)
 		.attr('step', 1)
-		.on('change', function() { 
+		.on('change', function() {
 			n = d3.select(this).property('value');
 		});
 
@@ -61,7 +61,7 @@ const selectStrategy = controlsContainer.append('label')
 		.style('margin-left', '1em')
 	.append('select')
 		.attr('id', 'strategy')
-		.on('change', function() { 
+		.on('change', function() {
 			strategy = d3.select(this).property('value');
 		});
 
@@ -69,6 +69,6 @@ const options = selectStrategy.selectAll('option')
 		.data(['default', 'martingale', 'anti-martingale'])
 		.enter()
 	.append('option')
-		.text((d)=> d);
+		.text((d) => d);
 
 lineChart.render(target, getFlipData(n, prob, strategy));

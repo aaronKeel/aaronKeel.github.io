@@ -6,7 +6,7 @@ export default function getFlipData(n: number, prob: number, strategy: string): 
 	let bet = 1;
 
 	switch (strategy) {
-		case "martingale":
+		case 'martingale':
 			for (let i = 1; i <= n; i++) {
 				const win = Math.random() > 1 - prob;
 
@@ -26,7 +26,7 @@ export default function getFlipData(n: number, prob: number, strategy: string): 
 
 			break;
 
-		case "anti-martingale":
+		case 'anti-martingale':
 			for (let i = 1; i <= n; i++) {
 				const win = Math.random() > 1 - prob;
 
@@ -45,7 +45,7 @@ export default function getFlipData(n: number, prob: number, strategy: string): 
 			}
 
 			break;
-		
+
 		default:
 			for (let i = 1; i <= n; i++) {
 				const win = Math.random() > 1 - prob;
