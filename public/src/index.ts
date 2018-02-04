@@ -13,6 +13,8 @@ d3.select(target).append('h1').classed('my-name', true).text('Aaron C Keel');
 d3.select(target).append('p').classed('my-title', true).text('JavaScript Developer - Data Visualization');
 d3.select(target).append('p').classed('my-title', true).text('Seattle, Washington');
 
+d3.select(target).append('h2').text('Coin Flipper');
+
 const controlsContainer = d3.select(target).append('div').classed('controls-container', true);
 
 let prob = 0.5;
