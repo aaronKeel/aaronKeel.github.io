@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { Hello } from '../hello';
 import { Thrashard, YouthAndLust, LyricsWrapperProps } from '../lyrics';
-import { GlobalHealthSpending, ChartWrapperProps } from '../chart';
+import { GlobalHealthSpending, PointChartWrapperProps } from '../chart';
 
 import './style.scss';
 
 export interface ContentLookup {
-    'global-health-spending': ({ className }: ChartWrapperProps) => JSX.Element;
+    'global-health-spending': ({ className }: PointChartWrapperProps) => JSX.Element;
     'youth-and-lust': ({ className }: LyricsWrapperProps) => JSX.Element;
     'thrashard': ({ className }: LyricsWrapperProps) => JSX.Element;
 }
