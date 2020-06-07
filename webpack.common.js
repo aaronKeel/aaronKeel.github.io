@@ -26,6 +26,10 @@ module.exports = {
                     name: '[path][name].[ext]',
                 },
             },
+            {
+                test: /\.txt$/i,
+                use: 'raw-loader',
+            },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
                 enforce: 'pre',
