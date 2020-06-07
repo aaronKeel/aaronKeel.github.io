@@ -2,4 +2,10 @@ import * as React from 'react';
 
 export interface HelloProps { compiler: string; framework: string; }
 
-export const Hello = (props: HelloProps): JSX.Element => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+export const Hello = ({ compiler, framework }: HelloProps): JSX.Element => (
+    <div>
+        <p>aaronKeel.github.io</p>
+        <p>{compiler}</p>
+        <p>{framework}</p>
+    </div>
+);
