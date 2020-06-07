@@ -27,7 +27,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.txt$/i,
+                test: /\.(txt|csv)$/i,
                 use: 'raw-loader',
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
