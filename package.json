@@ -1,36 +1,62 @@
 {
-  "name": "aaronkeel.github.io",
-  "version": "2.0.0",
-  "description": "personal homepage",
-  "main": "index.js",
-  "scripts": {
-    "webpack": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aaronKeel/aaronKeel.github.io.git"
-  },
-  "keywords": [
-    "homepage",
-    "portfolio"
-  ],
-  "author": "Aaron C Keel",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aaronKeel/aaronKeel.github.io/issues"
-  },
-  "homepage": "https://github.com/aaronKeel/aaronKeel.github.io#readme",
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
-    "source-map-loader": "^1.0.0",
-    "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
-  }
+    "name": "aaronkeel.github.io",
+    "version": "2.0.0",
+    "description": "personal homepage",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --config webpack.prod.js",
+        "start": "webpack-dev-server --open --config webpack.dev.js",
+        "serve": "http-server ./dist -p 8085 -o",
+        "lint": "eslint src --ext .ts,.tsx",
+        "ci:test": "jest --config=jest.config.js",
+        "test": "jest --config=jest.config.js --watch",
+        "tsn": "ts-node"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aaronKeel/aaronKeel.github.io.git"
+    },
+    "keywords": [
+        "homepage",
+        "portfolio"
+    ],
+    "author": "Aaron C Keel",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/aaronKeel/aaronKeel.github.io/issues"
+    },
+    "homepage": "https://github.com/aaronKeel/aaronKeel.github.io#readme",
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^25.2.3",
+        "@types/react": "^16.9.35",
+        "@types/react-dom": "^16.9.8",
+        "@typescript-eslint/eslint-plugin": "^3.1.0",
+        "@typescript-eslint/parser": "^3.1.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.5.3",
+        "eslint": "^7.2.0",
+        "eslint-plugin-react": "^7.20.0",
+        "eslint-plugin-react-hooks": "^4.0.4",
+        "file-loader": "^6.0.0",
+        "html-webpack-plugin": "^4.3.0",
+        "http-server": "^0.12.3",
+        "jest": "^26.0.1",
+        "mini-css-extract-plugin": "^0.9.0",
+        "node-sass": "^4.14.1",
+        "sass-loader": "^8.0.2",
+        "source-map-loader": "^1.0.0",
+        "style-loader": "^1.2.1",
+        "ts-jest": "^26.1.0",
+        "ts-loader": "^7.0.5",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.5",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.11.0",
+        "webpack-merge": "^4.2.2"
+    }
 }
