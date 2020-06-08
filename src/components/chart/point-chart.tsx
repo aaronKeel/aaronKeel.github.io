@@ -14,9 +14,10 @@ export interface ChartConfig {
     padding: number;
     backgroundFill: string;
     data: PointData[];
+    title: string;
 }
 export interface PointChartWrapperProps { className: string; }
-export interface PointChartProps extends PointChartWrapperProps { config: ChartConfig; }
+export interface PointChartProps { config: ChartConfig; }
 
 const cMin = (data: PointData[], i: number): number => data.reduce<number>((acc, { positions }) => Math.min(acc, ...positions.map(d => d[i])), Infinity);
 const cMax = (data: PointData[], i: number): number => data.reduce<number>((acc, { positions }) => Math.max(acc, ...positions.map(d => d[i])), -Infinity);
@@ -41,8 +42,8 @@ const pointGroup = (data: PointData, x: Scale, y: Scale, padding: number): JSX.E
     </g>
 );
 
-export const PointChart = ({ className, config }: PointChartProps): JSX.Element => {
-    const { height, width, padding, backgroundFill, data } = config;
+export const PointChart = ({ config }: PointChartProps): JSX.Element => {
+    const { height, width, padding, backgroundFill, data, title } = config;
     const dataWidth = width - 2 * padding;
     const dataHeight = height - 2 * padding;
     const xm = cMin(data, 0);
@@ -54,11 +55,12 @@ export const PointChart = ({ className, config }: PointChartProps): JSX.Element 
     const y = getScale(ym, yM, dataHeight, 0);
 
     return (
-        <div className={`chart-container ${className}`}>
-            <svg width={width} height={height} >
+        <div className='chart-container'>
+            <svg className='chart-svg' width={width} height={height} >
                 <rect width={width} height={height} fill={backgroundFill} />
                 {data.map(d => pointGroup(d, x, y, padding))}
             </svg>
+            <div className='chart-title' style={{ width }}><span className='chart-title--quote'>{'"'}</span>{title}<span className='chart-title--quote'>{'"'}</span></div>
         </div>
     );
 };
