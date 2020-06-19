@@ -9,14 +9,11 @@ interface Views {
     bar: () => JSX.Element;
 }
 
-const views: Views = {
-    vc: VC,
-    foo: function Foo() { return (<div>Foo</div>); },
-    bar: function Bar() { return (<div>Bar</div>); },
-};
+function Foo() { return (<Typography>Foo</Typography>); }
+function Bar() { return (<Typography>Bar</Typography>); }
 
-export const Main: React.FunctionComponent = () => {
-    const [selectedView, setSelectedView]  = useState<keyof Views>('vc');
+export function Main(): JSX.Element {
+    const [selectedView, setSelectedView] = useState<keyof Views>('foo');
 
     return (
         <Grid container>
@@ -24,23 +21,23 @@ export const Main: React.FunctionComponent = () => {
                 <Paper>
                     <Box p={2}>
                         <Typography>
-                            <Box>
-                                Aaron Keel
-                            </Box>
-                            <Box>
-                                <Link component="button" color="inherit" onClick={() => { setSelectedView('vc'); }}>Victory</Link>
-                            </Box>
-                            <Box>
-                                <Link component="button" color="inherit" onClick={() => { setSelectedView('foo'); }}>Foo</Link>
-                            </Box>
-                            <Box>
-                                <Link component="button" color="inherit" onClick={() => { setSelectedView('bar'); }}>Bar</Link>
-                            </Box>
+                            Aaron Keel
+                        </Typography>
+                        <Typography>
+                            <Link component="button" color="inherit" onClick={() => { setSelectedView('vc'); }}>Victory</Link>
+                        </Typography>
+                        <Typography>
+                            <Link component="button" color="inherit" onClick={() => { setSelectedView('foo'); }}>Foo</Link>
+                        </Typography>
+                        <Typography>
+                            <Link component="button" color="inherit" onClick={() => { setSelectedView('bar'); }}>Bar</Link>
                         </Typography>
                     </Box>
                 </Paper>
             </Grid>
-            {views[selectedView]()}
+            {selectedView === 'foo' && <Foo/>}
+            {selectedView === 'bar' && <Bar/>}
+            {selectedView === 'vc' && <VC/>}
         </Grid>
     );
-};
+}

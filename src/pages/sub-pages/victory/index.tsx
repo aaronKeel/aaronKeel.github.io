@@ -1,36 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 
-const data2012 = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-];
+import { vStore } from '../../../services/victory';
+import { QuarterEarnings } from '../../../services/victory/store';
 
-const data2013 = [
-    { quarter: 1, earnings: 15000 },
-    { quarter: 2, earnings: 12500 },
-    { quarter: 3, earnings: 19500 },
-    { quarter: 4, earnings: 13000 },
-];
+export function VC(): JSX.Element {
+    const [data, setData] = useState<QuarterEarnings[][] | null>(null);
 
-const data2014 = [
-    { quarter: 1, earnings: 11500 },
-    { quarter: 2, earnings: 13250 },
-    { quarter: 3, earnings: 20000 },
-    { quarter: 4, earnings: 15500 },
-];
+    useEffect(() => {
+        if (!data) vStore.fetchData().then(d => {
+            setData(d);
+        });
+    }, [data]);
 
-const data2015 = [
-    { quarter: 1, earnings: 18000 },
-    { quarter: 2, earnings: 13250 },
-    { quarter: 3, earnings: 15000 },
-    { quarter: 4, earnings: 12000 },
-];
+    if (!data) {
+        return (
+            <Grid container item xs={8}>
+                <CircularProgress />
+            </Grid>
+        );
+    }
 
-export const VC = (): JSX.Element => {
     return (
         <Grid container item xs={8}>
             <Grid item xs={6}>
@@ -47,26 +38,16 @@ export const VC = (): JSX.Element => {
                         tickFormat={(x) => (`$${x / 1000}k`)}
                     />
                     <VictoryStack>
-                        <VictoryBar
-                            data={data2012}
-                            x="quarter"
-                            y="earnings"
-                        />
-                        <VictoryBar
-                            data={data2013}
-                            x="quarter"
-                            y="earnings"
-                        />
-                        <VictoryBar
-                            data={data2014}
-                            x="quarter"
-                            y="earnings"
-                        />
-                        <VictoryBar
-                            data={data2015}
-                            x="quarter"
-                            y="earnings"
-                        />
+                        {data.map((d, i) => {
+                            return (
+                                <VictoryBar
+                                    key={`v-${i}`}
+                                    data={d}
+                                    x="quarter"
+                                    y="earnings"
+                                />
+                            );
+                        })}
                     </VictoryStack>
                 </VictoryChart>
             </Grid>
@@ -75,4 +56,4 @@ export const VC = (): JSX.Element => {
             </Grid>
         </Grid>
     );
-};
+}
