@@ -2,12 +2,16 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "module": "commonjs",
         "target": "es6",
-        "jsx": "react"
+        "jsx": "react",
+        "lib": ["es6", "dom"],
+        "strictNullChecks": true
     },
     "include": [
         "src/**/*"
