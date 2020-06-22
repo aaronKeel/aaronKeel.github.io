@@ -1,43 +1,32 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Paper, Box, Link } from '@material-ui/core';
+import { Typography, Grid, Paper, Box } from '@material-ui/core';
 
-import { VC } from '../sub-pages/victory';
+// COMPONENTS
+import { PageLink } from '../../components/page-link';
 
-interface Views {
-    vc: () => JSX.Element;
-    foo: () => JSX.Element;
-    bar: () => JSX.Element;
+// PAGES
+import { Introduction } from '../sub-pages/introduction';
+
+interface Pages {
+    introduction: () => JSX.Element;
 }
 
-function Foo() { return (<Typography>Foo</Typography>); }
-function Bar() { return (<Typography>Bar</Typography>); }
-
 export function Main(): JSX.Element {
-    const [selectedView, setSelectedView] = useState<keyof Views>('foo');
+    const [selectedPage, setSelectedPage] = useState<keyof Pages>('introduction');
 
     return (
         <Grid container>
-            <Grid item xs={4}>
+            <Grid item xs={2}>
                 <Paper>
                     <Box p={2}>
                         <Typography>
                             Aaron Keel
                         </Typography>
-                        <Typography>
-                            <Link component="button" color="inherit" onClick={() => { setSelectedView('vc'); }}>Victory</Link>
-                        </Typography>
-                        <Typography>
-                            <Link component="button" color="inherit" onClick={() => { setSelectedView('foo'); }}>Foo</Link>
-                        </Typography>
-                        <Typography>
-                            <Link component="button" color="inherit" onClick={() => { setSelectedView('bar'); }}>Bar</Link>
-                        </Typography>
+                        <PageLink title="Introduction" onClick={() => { setSelectedPage('introduction'); }} />
                     </Box>
                 </Paper>
             </Grid>
-            {selectedView === 'foo' && <Foo/>}
-            {selectedView === 'bar' && <Bar/>}
-            {selectedView === 'vc' && <VC/>}
+            {selectedPage === 'introduction' && <Introduction/>}
         </Grid>
     );
 }
