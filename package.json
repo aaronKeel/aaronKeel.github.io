@@ -10,6 +10,7 @@
         "lint": "eslint src --ext .ts,.tsx",
         "ci:test": "jest --config=jest.config.js",
         "test": "jest --config=jest.config.js --watch",
+        "checks": "npm run lint && npm run ci:test",
         "tsn": "ts-node"
     },
     "repository": {
